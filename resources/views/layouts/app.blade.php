@@ -30,5 +30,6 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('fa/js/fontawesome-all.min.js') }}" defer></script>
 </body>
 </html>
