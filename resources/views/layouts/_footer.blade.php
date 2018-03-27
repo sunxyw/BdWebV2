@@ -1,9 +1,31 @@
-<footer class="footer">
+<footer class="footer footer-default">
     <div class="container">
-        <p class="pull-left">
-            Copyright &copy; <a>Build-Dragon</a>. All Rights Reserved.
-        </p>
-
-        <p class="pull-right"><a href="mailto:name@email.com">联系我们</a></p>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://www.creative-tim.com">
+                        Creative Tim
+                    </a>
+                </li>
+                <li>
+                    <a href="http://presentation.creative-tim.com">
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="http://blog.creative-tim.com">
+                        Blog
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
+                        MIT License
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <a href="#">Build-Dragon</a>. All Right Reserved.
+        </div>
     </div>
 </footer>
