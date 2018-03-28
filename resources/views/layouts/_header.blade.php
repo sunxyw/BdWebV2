@@ -44,7 +44,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-header">{{ Auth::user()->name }}</a>
-                            <a class="dropdown-item" href="#">个人资料</a>
+                            <a class="dropdown-item" href="{{ route('users.show', auth::id()) }}">个人资料</a>
                             <a class="dropdown-item" href="#"
                                onclick="document.getElementById('logout-form').submit();">安全登出</a>
                         </div>
@@ -57,14 +57,12 @@
                     <a class="nav-link" rel="tooltip" title="加入QQ群" data-placement="bottom"
                        href="" target="_blank">
                         <i class="fa fa-qq"></i>
-                        <p class="d-lg-none d-xl-none">QQ</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="关注微博" data-placement="bottom"
                        href="" target="_blank">
                         <i class="fa fa-weibo"></i>
-                        <p class="d-lg-none d-xl-none">微博</p>
                     </a>
                 </li>
             </ul>

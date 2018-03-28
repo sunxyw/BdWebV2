@@ -1,97 +1,72 @@
 @extends('layouts.app')
 
+@section('title', '注册')
+
+@section('page', 'signup-page')
+
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">用户注册 <i class="fa fa-user-plus"></i></div>
+    <div class="page-header">
+        <div class="page-header-image"
+             style="background-image:url(https://i.loli.net/2018/02/13/5a82916abd385.png)"></div>
+        <div class="container">
+            <div class="col-md-4 content-center">
+                <br>
+                <div class="card card-signup" data-background-color="orange">
+                    <form class="form" method="POST" action="{{ route('register') }}">
+                        {{ csrf_field() }}
+                        <div class="header text-center">
+                            <h4 class="title title-up">注册</h4>
+                            <div class="social-line">
+                                <a href="#" class="btn btn-neutral btn-google btn-icon btn-round">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="btn btn-neutral btn-twitter btn-icon btn-lg btn-round">
+                                    <i class="fa fa-qq"></i>
+                                </a>
+                                <a href="#" class="btn btn-neutral btn-facebook btn-icon btn-round">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
 
-                    <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                            {{ csrf_field() }}
+                        @include('common.error')
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">用户名</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name"
-                                           value="{{ old('name') }}" required autofocus>
-
-                                    @if ($errors->has('name'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
+                        <div class="card-body">
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input type="text" name="name" class="form-control" placeholder="名称">
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope-o"></i>
+                                </span>
+                                <input type="email" name="email" class="form-control" placeholder="邮箱">
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" placeholder="密码" class="form-control">
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input type="password" name="password_confirm" placeholder="确认密码" class="form-control">
                             </div>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail 地址</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email"
-                                           value="{{ old('email') }}" required>
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">密 码</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">重复密码</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                           name="password_confirmation" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group {{ $errors->has('captcha') ? ' has-error' : '' }}">
-                                <label for="captcha" class="col-md-4 control-label">验证码</label>
-
-                                <div class="col-md-6">
-                                    <input id="captcha" class="form-control" name="captcha">
-
-                                    <img class="thumbnail captcha" src="{{ captcha_src('flat') }}"
-                                         onclick="this.src='/captcha/flat?'+Math.random()" title="点击图片重新获取验证码">
-
-                                    @if ($errors->has('captcha'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('captcha') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        注册
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="footer text-center">
+                            <button type="submit" class="btn btn-neutral btn-round btn-lg">注册</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+
+        @include('layouts._footer', ['type' => 'transparent'])
+
     </div>
 @endsection

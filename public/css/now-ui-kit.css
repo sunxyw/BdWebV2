@@ -3450,6 +3450,16 @@ body {
     color: #3ea1ec;
 }
 
+.btn-qq {
+    color: #30c2fa;
+}
+
+.btn-qq:hover,
+.btn-qq:focus,
+.btn-qq:active {
+    color: #23b9f4;
+}
+
 .btn-facebook {
     color: #3b5998;
 }
@@ -3458,6 +3468,16 @@ body {
 .btn-facebook:focus,
 .btn-facebook:active {
     color: #344e86;
+}
+
+.btn-github {
+    color: #24292e;
+}
+
+.btn-github:hover,
+.btn-github:focus,
+.btn-github:active {
+    color: #000000;
 }
 
 .btn-google {

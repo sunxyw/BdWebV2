@@ -1,69 +1,62 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">用户登录 <i class="fa fa-sign-in-alt"></i></div>
+@section('title', '登录')
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+@section('page', 'login-page')
+
+@section('content')
+    <div class="page-header">
+        <div class="page-header-image"
+             style="background-image:url(https://i.loli.net/2018/02/13/5a82916abd385.png)"></div>
+        <div class="container">
+            <div class="col-md-4 content-center">
+                <br>
+                <div class="card card-signup" data-background-color="orange">
+                    <form class="form" method="POST" action="{{ route('login') }}">
+
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail 地址</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">密码</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 记住我
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    登录
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                        <div class="header text-center">
+                            <h4 class="title title-up">登录</h4>
+                            <div class="social-line">
+                                <a href="#" class="btn btn-neutral btn-google btn-icon btn-round">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="btn btn-neutral btn-twitter btn-icon btn-lg btn-round">
+                                    <i class="fa fa-qq"></i>
+                                </a>
+                                <a href="#" class="btn btn-neutral btn-facebook btn-icon btn-round">
+                                    <i class="fa fa-github"></i>
                                 </a>
                             </div>
+                        </div>
+
+                        @include('common.error')
+
+                        <div class="card-body">
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope-o"></i>
+                                </span>
+                                <input type="email" name="email" class="form-control" placeholder="邮箱">
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" placeholder="密码" class="form-control">
+                            </div>
+
+                        </div>
+                        <div class="footer text-center">
+                            <button type="submit" class="btn btn-neutral btn-round btn-lg">登录</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
+        @include('layouts._footer', ['type' => 'transparent'])
+
     </div>
-</div>
 @endsection

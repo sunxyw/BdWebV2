@@ -1,10 +1,9 @@
 @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <h4>有错误发生：</h4>
-        <ul>
+    <div class="alert alert-danger" role="alert">
+        <div class="container text-left">
             @foreach ($errors->all() as $error)
-                <li><i class="fa fa-exclamation-triangle"></i> {{ $error }}</li>
+                <i class="fa fa-exclamation-triangle"></i> {{ $error }}<br>
             @endforeach
-        </ul>
+        </div>
     </div>
 @endif
