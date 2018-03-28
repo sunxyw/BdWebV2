@@ -8,14 +8,8 @@
                 <span class="button-bar"></span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-header">Dropdown header</a>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">One more separated link</a>
+                <a class="dropdown-header">站内导航</a>
+                <a class="dropdown-item" href="{{ route('root') }}">首页</a>
             </div>
         </div>
         <div class="navbar-translate">
@@ -55,7 +49,7 @@
                 @endguest
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="加入QQ群" data-placement="bottom"
-                       href="" target="_blank">
+                       href="https://jq.qq.com/?_wv=1027&k=5K72gG1" target="_blank">
                         <i class="fa fa-qq"></i>
                     </a>
                 </li>

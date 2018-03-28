@@ -41,7 +41,7 @@
                         <div class="col-md-6">
                             <div class="image-container image-left"
                                  style="background-image: url('https://i.loli.net/2018/02/13/5a828f5d2f841.jpg')">
-                                <!-- First image on the left side -->
+                                <!-- 左边第一个 -->
                                 <p class="blockquote blockquote-primary">
                                     "幻轮阁——处于真实与虚幻之中，即便近在眼前也极难被发现它，不入轮回，超离九天。纵使外界沧海桑田，它依旧是那般模样。传闻，此乃上古时期之大能——灵幻仙子与轮回真君的居所，只需在此地待上一年半载，即可长生不老..."
                                     <br>
@@ -49,17 +49,18 @@
                                     <small class="pull-right">构思：夕阳</small>
                                 </p>
                             </div>
-                            <!-- Second image on the left side of the article -->
+                            <!-- 左边第二个 -->
                             <div class="image-container"
                                  style="background-image: url('https://i.loli.net/2018/02/13/5a828f3be5542.jpg')"></div>
                         </div>
                         <div class="col-md-5">
-                            <!-- First image on the right side, above the article -->
+                            <!-- 右边第一个 -->
                             <div class="image-container image-right"
                                  style="background-image: url('https://i.loli.net/2018/02/13/5a82916abd385.png')"></div>
                             <h2 class="title">新年主城——幻轮阁</h2>
                             <p>苟年到了，祝愿幸运的清风时时吹拂你，幸福的雨滴四季淋着你，如意的月亮月月照耀你，健康的阳光天天温暖你。祝你天天开心快乐无边！
                             </p>
+                            <!-- 右边第二个 -->
                             <div class="image-container"
                                  style="background-image: url('https://i.loli.net/2018/02/13/5a828f5d205ea.jpg')"></div>
                         </div>
