@@ -1,5 +1,6 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+    @include('layouts._message')
     <div class="container">
         <div class="dropdown button-dropdown">
             <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
@@ -10,6 +11,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-header">站内导航</a>
                 <a class="dropdown-item" href="{{ route('root') }}">首页</a>
+                <a class="dropdown-item" href="{{ route('projects.index') }}">作品</a>
             </div>
         </div>
         <div class="navbar-translate">
@@ -20,6 +22,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
             </button>
         </div>
+
         <div class="collapse navbar-collapse justify-content-end" id="navigation"
              data-nav-image="https://demos.creative-tim.com/now-ui-kit/assets/img/blurred-image-1.jpg">
             <ul class="navbar-nav">
@@ -33,7 +36,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                            <img src="https://fsdhubcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60"
+                            <img src="{{ Auth::user()->avatar . '?r=' . time() }}"
                                  class="rounded-circle img-raised" width="30px" height="30px">
                         </a>
                         <div class="dropdown-menu">
@@ -47,6 +50,12 @@
                         {{ csrf_field() }}
                     </form>
                 @endguest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('root') }}">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('projects.index') }}">作品列表</a>
+                    </li>
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="加入QQ群" data-placement="bottom"
                        href="https://jq.qq.com/?_wv=1027&k=5K72gG1" target="_blank">

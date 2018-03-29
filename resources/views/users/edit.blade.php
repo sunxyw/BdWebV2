@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
+@section('title', '编辑 ' . $user->name . ' 的资料')
+
 @section('content')
 
     <div class="container">
         <div class="panel panel-default col-md-10 col-md-offset-1">
             <div class="panel-heading">
                 <h4>
-                    <i class="fa fa-edit"></i> 编辑个人资料
+                    <i class="fa fa-edit"></i> 编辑 {{ $user->name }} 的资料
                 </h4>
             </div>
 
@@ -31,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label for="introduction-field">个人简介</label>
-                        <textarea name="introduction" id="introduction-field" class="form-control"
+                        <textarea name="introduction" class="form-control"
                                   rows="3">{{ old('introduction', $user->introduction ) }}</textarea>
                     </div>
 
@@ -41,7 +43,7 @@
 
                         @if($user->avatar)
                             <br>
-                            <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200"/>
+                            <img class="rounded-circle img-raised" src="{{ $user->avatar }}" width="150"/>
                         @endif
                     </div>
 

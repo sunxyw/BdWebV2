@@ -36,25 +36,32 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <input type="text" name="name" class="form-control" placeholder="名称">
+                                <input type="text" name="name" class="form-control" placeholder="名称" required>
                             </div>
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">
                                     <i class="fa fa-envelope-o"></i>
                                 </span>
-                                <input type="email" name="email" class="form-control" placeholder="邮箱">
+                                <input type="email" name="email" class="form-control" placeholder="邮箱" required>
                             </div>
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">
                                     <i class="fa fa-lock"></i>
                                 </span>
-                                <input type="password" name="password" placeholder="密码" class="form-control">
+                                <input type="password" name="password" placeholder="密码" class="form-control" required>
                             </div>
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">
                                     <i class="fa fa-lock"></i>
                                 </span>
-                                <input type="password" name="password_confirm" placeholder="确认密码" class="form-control">
+                                <input type="password" name="password_confirmation" placeholder="确认密码" class="form-control" required>
+                            </div>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input type="text" name="captcha" placeholder="验证码" class="form-control" required>
+                                <img class="rounded" src="{{ captcha_src('flat') }}" onclick="this.src='/captcha/flat?'+Math.random()" title="点击图片重新获取验证码" height="38">
                             </div>
 
                         </div>

@@ -15,9 +15,8 @@ Route::get('/', 'PagesController@root')->name('root');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('projects', 'ProjectsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::get('projects/{project}/{slug?}', 'ProjectsController@show')->name('projects.show');

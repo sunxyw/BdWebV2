@@ -12,7 +12,7 @@
                 <div class="content-center">
                     <h1 class="title">筑龙小组</h1>
                     <div class="text-center">
-                        <a href="#pablo" class="btn btn-primary btn-icon btn-round">
+                        <a href="https://jq.qq.com/?_wv=1027&k=5K72gG1" target="_blank" class="btn btn-primary btn-icon btn-round">
                             <i class="fa fa-qq"></i>
                         </a>
                         <a href="#pablo" class="btn btn-primary btn-icon btn-round">
