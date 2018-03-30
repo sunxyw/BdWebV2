@@ -12,7 +12,8 @@
                 <div class="content-center">
                     <h1 class="title">筑龙小组</h1>
                     <div class="text-center">
-                        <a href="https://jq.qq.com/?_wv=1027&k=5K72gG1" target="_blank" class="btn btn-primary btn-icon btn-round">
+                        <a href="https://jq.qq.com/?_wv=1027&k=5K72gG1" target="_blank"
+                           class="btn btn-primary btn-icon btn-round">
                             <i class="fa fa-qq"></i>
                         </a>
                         <a href="#pablo" class="btn btn-primary btn-icon btn-round">
@@ -70,7 +71,10 @@
         </div>
         <div class="section section-team text-center">
             <div class="container">
-                <h2 class="title">这是我们<small><s>超级牛逼</s></small>的团队</h2>
+                <h2 class="title">这是我们
+                    <small><s>超级牛逼</s></small>
+                    的团队
+                </h2>
                 <div class="team">
                     <div class="row">
                         <div class="col-md-3">
@@ -139,30 +143,11 @@
         </div>
         <div class="section section-contact-us text-center">
             <div class="container">
-                <h2 class="title">想加入我们？</h2>
-                <p class="description"><s>洗洗睡吧</s></p>
+                <h2 class="title">热门作品</h2>
                 <div class="row">
-                    <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
-                        <div class="input-group input-lg">
-                            <span class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </span>
-                            <input type="text" class="form-control" placeholder="名称">
-                        </div>
-                        <div class="input-group input-lg">
-                            <span class="input-group-addon">
-                                <i class="fa fa-envelope-o"></i>
-                            </span>
-                            <input type="email" class="form-control" placeholder="邮箱">
-                        </div>
-                        <div class="textarea-container">
-                        <textarea class="form-control" name="name" rows="4" cols="80"
-                                  placeholder="简短介绍"></textarea>
-                        </div>
-                        <div class="send-button">
-                            <a href="#pablo" class="btn btn-primary btn-round btn-block btn-lg">提交</a>
-                        </div>
-                    </div>
+
+                    @include('projects._list', ['projects' => $projects])
+
                 </div>
             </div>
         </div>

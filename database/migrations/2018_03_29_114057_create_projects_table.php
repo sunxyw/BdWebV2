@@ -12,6 +12,7 @@ class CreateProjectsTable extends Migration
             $table->string('name', 80)->index();
             $table->text('summary');
             $table->text('body');
+            $table->string('img', 255);
             $table->integer('user_id')->unsigned()->index();
             $table->integer('category_id')->unsigned()->index();
             $table->integer('reply_count')->unsigned()->default(0);

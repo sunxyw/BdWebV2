@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
@@ -25,8 +25,7 @@ class UsersTableSeeder extends Seeder
             ->times(10)
             ->make()
             ->each(function ($user, $index)
-            use ($faker, $avatars)
-            {
+            use ($faker, $avatars) {
                 // 从头像数组中随机取出一个并赋值
                 $user->avatar = $faker->randomElement($avatars);
             });
@@ -44,6 +43,13 @@ class UsersTableSeeder extends Seeder
         $user->password = bcrypt('131782');
         $user->avatar = '/uploads/images/avatars/201803/29/1_1522307902_8yztVsagld.jpg';
         $user->save();
+
+        // 初始化用户角色，将 1 号用户指派为『站长』
+        $user->assignRole('Founder');
+
+        // 将 2 号用户指派为『管理员』
+        $user = User::find(2);
+        $user->assignRole('Maintainer');
 
     }
 }
