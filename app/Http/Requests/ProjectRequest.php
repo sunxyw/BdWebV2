@@ -9,14 +9,22 @@ class ProjectRequest extends Request
         switch ($this->method()) {
             // CREATE
             case 'POST':
-                // UPDATE
+                {
+                    return [
+                        'name' => 'required|min:2|unique:projects,name',
+                        'summary' => 'required|min:5',
+                        'user_id' => 'required',
+                        'accept' => 'required',
+                    ];
+                }
+            // UPDATE
             case 'PUT':
             case 'PATCH':
                 {
                     return [
                         'name' => 'required|min:2',
-                        'body' => 'required|min:3',
-                        'category_id' => 'required|numeric',
+                        'summary' => 'required|min:5',
+                        'user_id' => 'required',
                     ];
                 }
             case 'GET':
@@ -31,8 +39,8 @@ class ProjectRequest extends Request
     public function messages()
     {
         return [
-            'name.min' => '名称必须至少两个字符',
-            'body.min' => '内容必须至少三个字符',
+            'summary.min' => '简介 至少为5个字符',
+            'summary.required' => '简介 不能为空',
         ];
     }
 }

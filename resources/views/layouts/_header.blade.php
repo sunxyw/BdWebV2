@@ -1,10 +1,10 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-white fixed-top" style="border-top: 3px solid #4285f4">
+<nav class="navbar navbar-expand-lg bg-white fixed-top">
     @include('layouts._message')
     <div class="container">
         <div class="navbar-translate">
             <a class="nav-brand" href="#" data-toggle="dropdown">
-                <img src="{{ asset('img/logo.png') }}" height="30">
+                <img src="{{ asset('img/logo.png') }}" height="35">
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-header">站内导航</a>
@@ -24,11 +24,10 @@
                         <a class="nav-link" href="{{ route('users.show', Auth::id()) }}">个人资料</a>
                         <a class="nav-link" onclick="document.getElementById('logout-form').submit();">安全登出</a>
                     </div>
-                    <a class="nav-link" href="#" id="user-avatar">
+                    <a class="nav-link" href="javascript:void(0)" id="user-avatar">
                         <img src="{{ Auth::user()->avatar . '?r=' . time() }}"
                              class="rounded-circle" width="30px" height="30px">
                     </a>
-
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}

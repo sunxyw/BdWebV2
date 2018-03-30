@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
@@ -34,27 +34,49 @@ class ProjectsController extends Controller
 
     public function create(Project $project)
     {
-        return view('projects.create_and_edit', compact('project'));
+        $action = '新建作品';
+        $users = User::all();
+        return view('projects.create_and_edit', compact('project', 'action', 'users'));
     }
 
-    public function store(ProjectRequest $request)
+    public function store(ProjectRequest $request, ImageUploadHandler $uploader, User $user)
     {
-        $project = Project::create($request->all());
-        return redirect()->to($project->link())->with('message', 'Created successfully.');
+        $data = $request->all();
+
+        if ($request->img) {
+            $result = $uploader->save($request->img, 'projects', $user->id);
+            if ($result) {
+                $data['img'] = $result['path'];
+            }
+        }
+
+        $project = Project::create($data);
+        return redirect()->to($project->link())->with('message', '发布成功');
     }
 
     public function edit(Project $project)
     {
         $this->authorize('update', $project);
-        return view('projects.create_and_edit', compact('project'));
+        $action = '编辑 ' . $project->name;
+        $users = User::all();
+        return view('projects.create_and_edit', compact('project', 'action', 'users'));
     }
 
-    public function update(ProjectRequest $request, Project $project)
+    public function update(ProjectRequest $request, Project $project, ImageUploadHandler $uploader, User $user)
     {
         $this->authorize('update', $project);
-        $project->update($request->all());
+        $data = $request->all();
 
-        return redirect()->to($project->link())->with('message', 'Updated successfully.');
+        if ($request->img) {
+            $result = $uploader->save($request->img, 'projects', $user->id);
+            if ($result) {
+                $data['img'] = $result['path'];
+            }
+        }
+
+        $project->update($data);
+
+        return redirect()->to($project->link())->with('message', '修改成功');
     }
 
     public function destroy(Project $project)
@@ -62,6 +84,6 @@ class ProjectsController extends Controller
         $this->authorize('destroy', $project);
         $project->delete();
 
-        return redirect()->route('projects.index')->with('message', 'Deleted successfully.');
+        return redirect()->route('projects.index')->with('message', '删除成功');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Project extends Model
 {
-    protected $fillable = ['name', 'summary', 'body', 'user_id', 'category_id', 'reply_count', 'view_count', 'order', 'slug'];
+    protected $fillable = ['name', 'summary', 'user_id', 'reply_count', 'view_count', 'order', 'slug', 'img'];
 
     public function user()
     {
