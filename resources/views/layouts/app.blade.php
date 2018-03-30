@@ -25,36 +25,6 @@
 
 @yield('content')
 
-<div class="sudoSu" style="right: 30px !important;">
-    <div class="sudoSu__btn" id="sudosu-js-btn">
-        <i class="fa fa-user-secret" aria-hidden="true"></i>
-    </div>
-
-    <div class="sudoSu__interface hidden" id="sudosu-js-interface">
-
-        <form action="http://www.test.com/sudosu/sudosu/login-as-user" method="post">
-            <select name="userId" onchange="this.form.submit()">
-                <option disabled="" selected="">Sudo Su</option>
-
-                <option value="1">sunxyw</option>
-                <option value="2">Amari Stark</option>
-                <option value="3">Prof. Leola Paucek</option>
-                <option value="4">Gwen Barton</option>
-                <option value="5">Miss Mylene Yundt II</option>
-                <option value="6">Dr. Darion Morissette MD</option>
-                <option value="7">Layla Satterfield</option>
-                <option value="8">Ms. Lera Bartoletti Sr.</option>
-                <option value="9">Rita Wunsch</option>
-                <option value="10">Maci Zemlak</option>
-            </select>
-
-            <input type="hidden" name="_token" value="yp7zzMwNFPiGp3MnM7yoHO4UbRf7vJleHEu1jz6f">
-
-            <input type="hidden" name="originalUserId" value="">
-        </form>
-    </div>
-</div>
-
 @if (app()->isLocal())
     @include('sudosu::user-selector')
 @endif
@@ -72,5 +42,17 @@
 <script src="{{ asset('js/plugins/bootstrap-datepicker.js') }}" type="text/javascript"></script>
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="{{ asset('js/now-ui-kit.js') }}" type="text/javascript"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#user-avatar').click(function () {
+           $('#default').toggle('hide');
+           $('#user').toggle('hide');
+        });
+    });
+
+</script>
 
 </html>
