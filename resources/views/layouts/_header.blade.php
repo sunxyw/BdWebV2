@@ -3,15 +3,10 @@
     @include('layouts._message')
     <div class="container">
         <div class="navbar-translate">
-            <a class="nav-brand" href="#" data-toggle="dropdown">
+            <a class="nav-brand">
                 <img src="{{ asset('img/logo.png') }}" height="35">
             </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-header">站内导航</a>
-                <a class="dropdown-item" href="{{ route('root') }}">首页</a>
-                <a class="dropdown-item" href="{{ route('projects.index') }}">作品</a>
-            </div>
-            <div class="form-inline float-right">
+            <div class="form-inline d-lg-none d-xl-none">
                 <div id="default" class="form-inline">
                     <a class="nav-link" href="{{ route('root') }}">首页</a>
                     <a class="nav-link" href="{{ route('projects.index') }}">作品列表</a>
@@ -34,6 +29,49 @@
                     </form>
                 @endguest
             </div>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a style="display: none" class="d-md-block">&emsp;</a>
+                </li>
+                <li class="nav-item">
+                    <a style="display: none" class="nav-link d-md-block" href="{{ route('root') }}">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a style="display: none" class="nav-link d-md-block" href="{{ route('projects.index') }}">作品列表</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <form class="form form-inline">
+                    <input style="display: none;" type="text" name="name" class="form-control d-md-block"
+                           placeholder="搜索">
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a style="display: none" class="d-md-block">&emsp;</a>
+                    </li>
+                    @guest
+                        <li class="nav-item">
+                            <a style="display: none" class="nav-link d-md-block" href="{{ route('login') }}">登录</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="display: none" class="nav-link d-md-block" href="{{ route('register') }}">注册</a>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="{{ Auth::user()->avatar . '?r=' . time() }}"
+                                     class="rounded-circle" width="30px" height="30px">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="user">
+                                <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}">个人资料</a>
+                                <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">安全登出</a>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
+            </ul>
         </div>
     </div>
 </nav>
