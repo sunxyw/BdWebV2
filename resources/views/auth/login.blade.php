@@ -22,7 +22,7 @@
                                 <a href="#" class="btn btn-neutral btn-google btn-icon btn-round">
                                     <i class="fa fa-weibo"></i>
                                 </a>
-                                <a href="#" class="btn btn-neutral btn-twitter btn-icon btn-lg btn-round">
+                                <a href="#" class="btn btn-neutral btn-twitter btn-icon btn-lg btn-round" id="qq-btn">
                                     <i class="fa fa-qq"></i>
                                 </a>
                                 <a href="#" class="btn btn-neutral btn-facebook btn-icon btn-round">
@@ -33,7 +33,7 @@
 
                         @include('common.error')
 
-                        <div class="card-body">
+                        <div class="card-body" id="default">
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">
                                     <i class="fa fa-envelope-o"></i>
@@ -46,8 +46,13 @@
                                 </span>
                                 <input type="password" name="password" placeholder="密码" class="form-control">
                             </div>
-
                         </div>
+
+                        <div class="card-body" style="display: none;" id="qq">
+                            <img src="https://ssl.ptlogin2.qq.com/ptqrshow?appid=501004106&e=0&l=M&s=5&d=72&v=4&t=0.5965643996421681
+">
+                        </div>
+
                         <div class="footer text-center">
                             <button type="submit" class="btn btn-neutral btn-round btn-lg">登录</button>
                         </div>
@@ -59,4 +64,13 @@
         @include('layouts._footer', ['type' => 'transparent'])
 
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#qq-btn').click(function () {
+                $('#default').hide();
+                $('#qq').show();
+            });
+        });
+    </script>
 @endsection
