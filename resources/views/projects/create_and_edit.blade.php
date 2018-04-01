@@ -93,11 +93,11 @@
                                             </div>
                                             <div class="input-group">
                                                 <button class="btn btn-info"
-                                                        onclick="document.getElementById('img-file').click()">
+                                                        onclick="document.getElementById('img-file').click()" type="button">
                                                     选择封面图
                                                 </button>
                                                 <input class="form-control" name="img" type="file" id="img-file"
-                                                       style="display: none;">
+                                                       style="display: none;" accept="image/*">
                                             </div>
 
                                             <div class="checkbox">

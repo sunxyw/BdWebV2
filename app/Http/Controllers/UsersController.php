@@ -15,7 +15,8 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $projects = $user->projects;
+        return view('users.show', compact('user', 'projects'));
     }
 
     public function edit(User $user)

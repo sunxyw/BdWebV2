@@ -27,9 +27,6 @@ class ProjectsTableSeeder extends Seeder
                 // 从用户 ID 数组中随机取出一个并赋值
                 $project->user_id = $faker->randomElement($user_ids);
                 $project->img = $faker->randomElement($imgs);
-
-                // 话题分类，同上
-                $project->category_id = 9;
             });
 
         // 将数据集合转换为数组，并插入到数据库中

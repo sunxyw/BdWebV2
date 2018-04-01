@@ -16,7 +16,7 @@
                         <img src="{{ $user->avatar . '?r=' . time() }}" alt="{{ $user->name }}">
                     </div>
                     <h3 class="title">{{ $user->name }}</h3>
-                    <p class="category">技术总监</p>
+                    <p class="category">{{ $user->position() }}</p>
                 </div>
             </div>
         </div>
@@ -27,9 +27,9 @@
                         @if(Auth::user()->id === $user->id)
                             <a href="{{ route('users.edit', $user->id) }}"
                                class="btn btn-primary btn-round btn-lg">编辑</a>
+                            @else
+                            <a href="#" class="btn btn-primary btn-round btn-lg">关注</a>
                         @endif
-                    @else
-                        <a href="#button" class="btn btn-primary btn-round btn-lg">关注</a>
                     @endisset
                     <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title=""
                        data-original-title="添加 Ta 的好友">
@@ -52,18 +52,17 @@
                     <div class="tab-pane active" id="home" role="tabpanel">
                         <div class="col-md-10 ml-auto mr-auto">
                             <div class="row collections">
+                                @foreach($projects as $project)
                                 <div class="col-md-6">
-                                    <img src="https://demos.creative-tim.com/now-ui-kit/assets/img/bg1.jpg" alt=""
-                                         class="img-raised">
-                                    <img src="https://demos.creative-tim.com/now-ui-kit/assets/img/bg3.jpg" alt=""
-                                         class="img-raised">
+                                    <a href="{{ $project->link() }}">
+                                        <img src="{{ $project->img }}" alt="{{ $project->name }}"
+                                             class="img-raise">
+                                    </a>
                                 </div>
-                                <div class="col-md-6">
-                                    <img src="https://demos.creative-tim.com/now-ui-kit/assets/img/bg8.jpg" alt=""
-                                         class="img-raised">
-                                    <img src="https://demos.creative-tim.com/now-ui-kit/assets/img/bg7.jpg" alt=""
-                                         class="img-raised">
-                                </div>
+
+                                @break($loop->iteration == 4)
+
+                                @endforeach
                             </div>
                         </div>
                     </div>

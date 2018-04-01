@@ -13,19 +13,34 @@ class SeedRolesAndPermissionsData extends Migration
         app()['cache']->forget('spatie.permission.cache');
 
         // 先创建权限
-        Permission::create(['name' => 'manage_contents']);
         Permission::create(['name' => 'manage_users']);
-        Permission::create(['name' => 'edit_settings']);
+        Permission::create(['name' => 'destory_users']);
+        Permission::create(['name' => 'manage_projects']);
+        Permission::create(['name' => 'destory_projects']);
 
         // 创建站长角色，并赋予权限
-        $founder = Role::create(['name' => 'Founder']);
-        $founder->givePermissionTo('manage_contents');
-        $founder->givePermissionTo('manage_users');
-        $founder->givePermissionTo('edit_settings');
+        $master = Role::create(['name' => 'Master']);
+        $master->givePermissionTo('manage_users');
+        $master->givePermissionTo('destory_users');
+        $master->givePermissionTo('manage_projects');
+        $master->givePermissionTo('destory_projects');
 
-        // 创建管理员角色，并赋予权限
-        $maintainer = Role::create(['name' => 'Maintainer']);
-        $maintainer->givePermissionTo('manage_contents');
+        // 创建组长角色，并赋予权限
+        $leader = Role::create(['name' => 'Leader']);
+        $leader->givePermissionTo('manage_users');
+        $leader->givePermissionTo('destory_users');
+        $leader->givePermissionTo('manage_projects');
+        $leader->givePermissionTo('destory_projects');
+
+        // 创建管理角色，并赋予权限
+        $admin = Role::create(['name' => 'Admin']);
+        $admin->givePermissionTo('manage_users');
+        $admin->givePermissionTo('manage_projects');
+        $admin->givePermissionTo('destory_users');
+
+        // 创建骨干角色，并赋予权限
+        $core = Role::create(['name' => 'Core']);
+        $core->givePermissionTo('manage_projects');
     }
 
     public function down()

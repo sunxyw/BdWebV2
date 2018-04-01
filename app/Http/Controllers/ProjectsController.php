@@ -29,6 +29,8 @@ class ProjectsController extends Controller
             return redirect($project->link(), 301);
         }
 
+        $project->increment('view_count');
+
         return view('projects.show', compact('project'));
     }
 
@@ -51,7 +53,7 @@ class ProjectsController extends Controller
         }
 
         $project = Project::create($data);
-        return redirect()->to($project->link())->with('message', '发布成功');
+        return redirect()->to($project->link())->with('success', '发布成功');
     }
 
     public function edit(Project $project)
@@ -76,7 +78,7 @@ class ProjectsController extends Controller
 
         $project->update($data);
 
-        return redirect()->to($project->link())->with('message', '修改成功');
+        return redirect()->to($project->link())->with('success', '修改成功');
     }
 
     public function destroy(Project $project)
@@ -84,6 +86,6 @@ class ProjectsController extends Controller
         $this->authorize('destroy', $project);
         $project->delete();
 
-        return redirect()->route('projects.index')->with('message', '删除成功');
+        return redirect()->route('projects.index')->with('success', '删除成功');
     }
 }

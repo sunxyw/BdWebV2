@@ -45,11 +45,32 @@ class UsersTableSeeder extends Seeder
         $user->save();
 
         // 初始化用户角色，将 1 号用户指派为『站长』
-        $user->assignRole('Founder');
+        $user->assignRole('Master');
 
         // 将 2 号用户指派为『管理员』
         $user = User::find(2);
-        $user->assignRole('Maintainer');
+        $user->name = '西瓜';
+        $user->email = '2310502033@qq.com';
+        $user->password = bcrypt('123456');
+        $user->avatar = '/img/team/member-1.jpg';
+        $user->save();
+        $user->assignRole('Leader');
+
+        $user = User::find(3);
+        $user->name = '冬瓜';
+        $user->email = '1198545557@qq.com';
+        $user->password = bcrypt('123456');
+        $user->avatar = '/img/team/member-2.jpg';
+        $user->save();
+        $user->assignRole('Admin');
+
+        $user = User::find(4);
+        $user->name = '阿布';
+        $user->email = '3287669416@qq.com';
+        $user->password = bcrypt('123456');
+        $user->avatar = '/img/team/member-3.jpg';
+        $user->save();
+        $user->assignRole('Admin');
 
     }
 }

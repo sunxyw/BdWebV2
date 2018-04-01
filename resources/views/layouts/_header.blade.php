@@ -46,11 +46,9 @@
                 <form class="form form-inline">
                     <input style="display: none;" type="text" name="name" class="form-control d-md-block"
                            placeholder="搜索">
+                    <a class="btn btn-neutral btn-sm" href="{{ route('projects.create') }}"><i class="fa fa-plus"></i></a>
                 </form>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a style="display: none" class="d-md-block">&emsp;</a>
-                    </li>
                     @guest
                         <li class="nav-item">
                             <a style="display: none" class="nav-link d-md-block" href="{{ route('login') }}">登录</a>

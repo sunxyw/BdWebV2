@@ -1,59 +1,73 @@
 @extends('layouts.app')
 
+@section('title', $project->name)
+
 @section('content')
+    <div class="page-header page-header-small">
+        <div class="page-header-image" data-parallax="true"
+             style="background-image: url('{{ $project->img }}');"
+             id="banner">
+        </div>
+    </div>
 
-<div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1>Project / Show #{{ $project->id }}</h1>
-            </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
 
-            <div class="panel-body">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a class="btn btn-link" href="{{ route('projects.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
+                    <div id="productCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="d-block img-raised" src="{{ $project->img }}" id="img"
+                                     style="max-height: 450px">
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                             <a class="btn btn-sm btn-warning pull-right" href="{{ route('projects.edit', $project->id) }}">
-                                <i class="glyphicon glyphicon-edit"></i> Edit
-                            </a>
+                    </div>
+
+                    <br>
+
+                </div>
+                <div class="col-md-6 ml-auto mr-auto">
+                    <h2 class="title">{{ $project->name }}</h2>
+                    <h5 class="category">{{ $project->user->name }} 
+                        <small class="pull-right">点击量: {{ $project->view_count }}</small>
+                    </h5>
+
+                    <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
+                        <div class="card">
+                            <div class="card-header text-primary" role="tab" id="headingOne">
+                                详细资料
+                            </div>
+                            <div class="card-body">
+                                <p>{{ $project->summary }}</p>
+                                <p class="text-muted pull-right">
+                                    发布于: {{ $project->created_at->diffForHumans() }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            @can('update', $project)
+                                <a class="btn btn-warning mr-3" href="{{ route('projects.edit', $project->id) }}">
+                                    编辑 <i class="fa fa-edit"></i>
+                                </a>
+                            @endcan
+                            @can('destroy', $project)
+                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-danger mr-3" type="submit">
+                                        删除 <i class="fa fa-remove"></i>
+                                    </button>
+                                </form>
+                            @endcan
+                            <button class="btn btn-primary mr-3">下载 <i class="fa fa-download"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <label>Name</label>
-<p>
-	{{ $project->name }}
-</p> <label>Summary</label>
-<p>
-	{{ $project->summary }}
-</p> <label>Body</label>
-<p>
-	{{ $project->body }}
-</p> <label>User_id</label>
-<p>
-	{{ $project->user_id }}
-</p> <label>Category_id</label>
-<p>
-	{{ $project->category_id }}
-</p> <label>Reply_count</label>
-<p>
-	{{ $project->reply_count }}
-</p> <label>View_count</label>
-<p>
-	{{ $project->view_count }}
-</p> <label>Order</label>
-<p>
-	{{ $project->order }}
-</p> <label>Slug</label>
-<p>
-	{{ $project->slug }}
-</p>
             </div>
         </div>
     </div>
-</div>
+    @include('layouts._footer')
 
 @endsection

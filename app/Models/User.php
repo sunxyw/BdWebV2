@@ -28,4 +28,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function projects()
+    {
+        return $this->hasMany('App\Models\Project');
+    }
+
+    public function position()
+    {
+        if ($this->hasRole('Master')) {
+            return '最高管理';
+        } elseif ($this->hasRole('Leader')) {
+            return '组长';
+        } elseif ($this->hasRole('Admin')) {
+            return '管理';
+        } elseif ($this->hasRole('core')) {
+            return '骨干成员';
+        }
+    }
 }

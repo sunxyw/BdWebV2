@@ -13,7 +13,6 @@ $factory->define(App\Models\Project::class, function (Faker $faker) {
 
     return [
         'name' => $faker->company,
-        'body' => $faker->text(),
         'summary' => $sentence,
         'created_at' => $created_at,
         'updated_at' => $updated_at,
