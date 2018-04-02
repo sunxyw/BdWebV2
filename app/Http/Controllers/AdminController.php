@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;;
 
 class AdminController extends Controller
 {
@@ -11,8 +12,12 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function root()
     {
-        return view('admin.', compact('projects', 'users'));
+    	$projects = DB::table('projects')->select(DB::raw('count(*) as id'))->get();
+    	$users = DB::table('users')->select(DB::raw('count(*) as id'))->get();
+    	$click = DB::table('projects')->select(DB::raw('sum(view_count) as total_view'))->get();
+
+        return view('admin.root', compact('projects', 'users', 'click'));
     }
 }

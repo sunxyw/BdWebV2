@@ -21,6 +21,4 @@ Route::resource('projects', 'ProjectsController', ['only' => ['index', 'create',
 
 Route::get('projects/{project}/{slug?}', 'ProjectsController@show')->name('projects.show');
 
-Route::get('projects/{project}/ban', 'ProjectsController@ban')->name('projects.ban');
-
-Route::get('/admin', 'AdminController@root')->name('admin.root');
+Route::get('admin/root', 'AdminController@root')->name('admin.root');
