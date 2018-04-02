@@ -36,13 +36,13 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <input type="text" name="name" class="form-control" placeholder="名称" required>
+                                <input type="text" name="name" class="form-control" placeholder="名称" value="{{ old('name') }}" required>
                             </div>
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">
                                     <i class="fa fa-envelope-o"></i>
                                 </span>
-                                <input type="email" name="email" class="form-control" placeholder="邮箱" required>
+                                <input type="email" name="email" class="form-control" placeholder="邮箱" value="{{ old('email') }}" required>
                             </div>
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">

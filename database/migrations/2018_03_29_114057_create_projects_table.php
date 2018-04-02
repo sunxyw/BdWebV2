@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->integer('view_count')->unsigned()->default(0);
             $table->integer('order')->unsigned()->default(0);
             $table->string('slug')->nullable();
+            $table->string('banned')->nullable();
             $table->timestamps();
         });
 	}

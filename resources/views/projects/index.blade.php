@@ -17,7 +17,7 @@
                         <div class="col-md-3">
                             <div class="collapse-panel">
                                 <div class="card-body">
-                                    <form method="GET" action="{{ route('projects.index') }}">
+                                    <form method="GET" action="{{ route('projects.index') }}" onreset="this.submit()">
                                         <div class="card card-refine card-plain">
                                             <h4 class="card-title">
                                                 条件筛选
@@ -26,68 +26,22 @@
                                                     <i class="arrows-1_refresh-69 now-ui-icons"></i>
                                                 </button>
                                             </h4>
-                                            <div class="card-header" role="tab">
-                                                <h6 class="mb-0">
-                                                    <a data-toggle="collapse" href="#size"
-                                                       aria-expanded="true">
-                                                        规模
-                                                        <i class="now-ui-icons arrows-1_minimal-down pull-right"></i>
-                                                    </a>
-                                                </h6>
-                                            </div>
 
-                                            <div id="size" class="collapse show" role="tabpanel">
-                                                <div class="card-body">
-                                                    <div class="radio">
-                                                        <input type="radio" name="size" id="size1" value="1">
-                                                        <label for="size1">
-                                                            大型群体建筑
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input type="radio" name="size" id="size2" value="2">
-                                                        <label for="size2">
-                                                            小型群体建筑
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input type="radio" name="size" id="size3" value="3">
-                                                        <label for="size3">
-                                                            大型单体建筑
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input type="radio" name="size" id="size4" value="4">
-                                                        <label for="size4">
-                                                            小型群体建筑
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="card card-refine card-plain">
-                                                <div class="card-header" role="tab">
-                                                    <h6 class="mb-0">
-                                                        <a data-toggle="collapse" href="#author"
-                                                           aria-expanded="true">
-                                                            作者
-                                                            <i class="now-ui-icons arrows-1_minimal-down pull-right"></i>
-                                                        </a>
-                                                    </h6>
-                                                </div>
-
-                                                <div id="author" class="collapse" role="tabpanel">
-                                                    <div class="card-body">
-                                                        抱歉，功能尚未开放
-                                                        {{--@foreach($users as $user)
-                                                            <div class="radio">
-                                                                <input type="radio" name="author" id="author{{ $user->id }}"
-                                                                       value="{{ $user->id }}">
-                                                                <label for="author{{ $user->id }}">
-                                                                    {{ $user->name }}
-                                                                </label>
-                                                            </div>
-                                                        @endforeach--}}
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <span class="input-group-text small text-muted">作者</span>
                                                     </div>
+                                                    <select name="author" id="author-choose" class="form-control">
+                                                        <option value selected>--- 请选择 ---</option>
+                                                        @foreach($users as $user)
+                                                            @if(!empty($_GET['author']) && $_GET['author'] == $user->id)
+                                                                <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                                                            @else
+                                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                             <button class="btn btn-primary btn-block">确认</button>
@@ -101,7 +55,6 @@
                             <div class="row">
 
                                 @include('projects._list', ['projects' => $projects])
-                                {!! $projects->render() !!}
 
                             </div>
                         </div>

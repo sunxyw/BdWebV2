@@ -23,6 +23,8 @@
             </div> <!-- end card -->
         </div>
 
+        @break($loop->iteration == 12)
+
     @endforeach
 @else
     暂无数据

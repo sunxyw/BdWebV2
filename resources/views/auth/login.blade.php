@@ -38,7 +38,7 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-envelope-o"></i>
                                 </span>
-                                <input type="email" name="email" class="form-control" placeholder="邮箱">
+                                <input type="email" name="email" class="form-control" placeholder="邮箱" value="{{ old('email') }}">
                             </div>
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">

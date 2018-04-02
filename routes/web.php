@@ -20,3 +20,5 @@ Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit'
 Route::resource('projects', 'ProjectsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::get('projects/{project}/{slug?}', 'ProjectsController@show')->name('projects.show');
+
+Route::get('projects/{project}/ban', 'ProjectsController@ban')->name('projects.ban');

@@ -14,9 +14,11 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- CSS Files -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/app.css') }}?r={{ time() }}" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('css/demo.css') }}" rel="stylesheet"/>
+
+    <link href="https://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 
 <body class="@yield('page', 'landing-page') sidebar-collapse">
@@ -43,6 +45,8 @@
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="{{ asset('js/now-ui-kit.js') }}" type="text/javascript"></script>
 
+<script src="https://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/js/bootstrap-select.min.js"></script>
+
 <script>
 
     $(document).ready(function () {
@@ -54,5 +58,7 @@
     });
 
 </script>
+
+@yield('script')
 
 </html>

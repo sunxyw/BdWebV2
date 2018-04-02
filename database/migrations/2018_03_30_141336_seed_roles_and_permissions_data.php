@@ -14,29 +14,29 @@ class SeedRolesAndPermissionsData extends Migration
 
         // 先创建权限
         Permission::create(['name' => 'manage_users']);
-        Permission::create(['name' => 'destory_users']);
+        Permission::create(['name' => 'destroy_users']);
         Permission::create(['name' => 'manage_projects']);
-        Permission::create(['name' => 'destory_projects']);
+        Permission::create(['name' => 'destroy_projects']);
 
         // 创建站长角色，并赋予权限
         $master = Role::create(['name' => 'Master']);
         $master->givePermissionTo('manage_users');
-        $master->givePermissionTo('destory_users');
+        $master->givePermissionTo('destroy_users');
         $master->givePermissionTo('manage_projects');
-        $master->givePermissionTo('destory_projects');
+        $master->givePermissionTo('destroy_projects');
 
         // 创建组长角色，并赋予权限
         $leader = Role::create(['name' => 'Leader']);
         $leader->givePermissionTo('manage_users');
-        $leader->givePermissionTo('destory_users');
+        $leader->givePermissionTo('destroy_users');
         $leader->givePermissionTo('manage_projects');
-        $leader->givePermissionTo('destory_projects');
+        $leader->givePermissionTo('destroy_projects');
 
         // 创建管理角色，并赋予权限
         $admin = Role::create(['name' => 'Admin']);
         $admin->givePermissionTo('manage_users');
         $admin->givePermissionTo('manage_projects');
-        $admin->givePermissionTo('destory_users');
+        $admin->givePermissionTo('destroy_projects');
 
         // 创建骨干角色，并赋予权限
         $core = Role::create(['name' => 'Core']);

@@ -51,6 +51,15 @@
                                     编辑 <i class="fa fa-edit"></i>
                                 </a>
                             @endcan
+                            @can('ban', $project)
+                                <form action="{{ route('projects.ban', $project->id) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-danger mr-3" type="submit">
+                                        封禁 <i class="fa fa-ban"></i>
+                                    </button>
+                                </form>
+                            @endcan
                             @can('destroy', $project)
                                 <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
                                     {{ csrf_field() }}

@@ -15,9 +15,12 @@ class ProjectsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    public function index(User $author)
+    public function index()
     {
-        $projects = Project::with('user')->paginate(6);
+        $projects = Project::with('user')->get();
+        if (!empty($_GET['author'])) {
+            $projects = $projects = Project::with('user')->where('user_id', $_GET['author'])->get();
+        }
         $users = User::all();
         return view('projects.index', compact('projects', 'users'));
     }
@@ -87,5 +90,12 @@ class ProjectsController extends Controller
         $project->delete();
 
         return redirect()->route('projects.index')->with('success', '删除成功');
+    }
+
+    public function ban(Project $project)
+    {
+        $this->authorize('ban', $project);
+
+        return redirect()->route('projects.show')->with('success', '删除成功');
     }
 }

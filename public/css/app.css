@@ -14,7 +14,7 @@
   display: inline-block;
   direction: ltr;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 0;
   border: 0;
   position: relative;
   text-align: left;
@@ -2278,7 +2278,7 @@ fieldset[disabled]
 .form-control {
   background-color: transparent;
   border: 1px solid #E3E3E3;
-  border-radius: 30px;
+  border-radius: 0;
   color: #2c2c2c;
   line-height: normal;
   font-size: 0.8571em;
@@ -2498,7 +2498,7 @@ fieldset[disabled]
 .input-group-addon {
   background-color: #FFFFFF;
   border: 1px solid #E3E3E3;
-  border-radius: 30px;
+  border-radius: 0;
   color: #555555;
   padding: -0.5rem 0 -0.5rem -0.3rem;
   -webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -3344,7 +3344,7 @@ body {
   color: #9A9A9A;
   margin-right: 19px;
   background-color: rgba(222, 222, 222, 0.3);
-  border-radius: 30px;
+  border-radius: 0;
 }
 
 .nav-pills .nav-item .nav-link:hover {
@@ -3479,7 +3479,7 @@ body {
   margin-right: 5px;
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 30px;
+  border-radius: 0;
   font-size: 14px;
   padding: 11px 23px;
   line-height: 1.5;
@@ -3491,7 +3491,7 @@ body {
 
 .nav-tabs > .nav-item > .nav-link.active {
   border: 1px solid #888;
-  border-radius: 30px;
+  border-radius: 0;
 }
 
 .nav-tabs > .nav-item > .nav-link i.now-ui-icons {
