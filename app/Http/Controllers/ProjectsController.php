@@ -7,6 +7,7 @@ use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProjectsController extends Controller
 {
@@ -29,6 +30,11 @@ class ProjectsController extends Controller
     {
         // URL 矫正
         if (!empty($project->slug) && $project->slug != $request->slug) {
+            return redirect($project->link(), 301);
+        }
+
+        if (empty($project->slug)) {
+            $project->save();
             return redirect($project->link(), 301);
         }
 
@@ -84,18 +90,27 @@ class ProjectsController extends Controller
         return redirect()->to($project->link())->with('success', '修改成功');
     }
 
-    public function destroy(Project $project)
+    public function destroy(Request $request, Project $project)
     {
+        if ($request->action == 'ban') {
+
+            if ($project->banned) {
+                $project->banned = null;
+                $project->save();
+
+                return redirect()->to($project->link())->with('success', '已解除封禁');
+            }
+
+            $this->authorize('ban', $project);
+            $project->banned = '被' . Auth::user()->name . '封禁';
+            $project->save();
+
+            return redirect()->to($project->link())->with('success', '封禁成功');
+        }
+
         $this->authorize('destroy', $project);
         $project->delete();
 
         return redirect()->route('projects.index')->with('success', '删除成功');
-    }
-
-    public function ban(Project $project)
-    {
-        $this->authorize('ban', $project);
-
-        return redirect()->route('projects.show')->with('success', '删除成功');
     }
 }

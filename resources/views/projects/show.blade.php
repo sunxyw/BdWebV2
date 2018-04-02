@@ -13,6 +13,26 @@
     <div class="section">
         <div class="container">
             <div class="row">
+                @if($project->banned)
+                    <div class="mr-auto ml-auto text-danger text-center">
+                        <h1 class="title">十分抱歉</h1>
+                        <h1>该作品已{{ $project->banned }}</h1>
+                        <hr>
+                        <div class="social-line text-white">
+                            <a class="btn btn-warning mr-3">申诉</a>
+                            @can('ban', $project)
+                                <button class="btn btn-warning mr-3" type="button" onclick="document.getElementById('unban-form').submit();">
+                                    解除封禁
+                                </button>
+                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST" id="unban-form">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <input type="hidden" name="action" value="ban">
+                                </form>
+                            @endcan
+                        </div>
+                    </div>
+                @else
                 <div class="col-md-6">
 
                     <div id="productCarousel" class="carousel slide" data-ride="carousel">
@@ -52,10 +72,10 @@
                                 </a>
                             @endcan
                             @can('ban', $project)
-                                <form action="{{ route('projects.ban', $project->id) }}" method="POST">
+                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-danger mr-3" type="submit">
+                                    <button class="btn btn-danger mr-3" type="submit" name="action" value="ban">
                                         封禁 <i class="fa fa-ban"></i>
                                     </button>
                                 </form>
@@ -73,6 +93,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
             </div>
         </div>
