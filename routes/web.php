@@ -23,4 +23,6 @@ Route::get('projects/{project}/{slug?}', 'ProjectsController@show')->name('proje
 
 Route::prefix('admin')->group(function () {
     Route::get('root', 'Admin\RootController@root')->name('admin.root');
+    Route::resource('musers', 'Admin\UsersController', ['only' => ['index', 'update', 'edit']]);
+    Route::resource('mprojects', 'Admin\ProjectsController', ['only' => ['index', 'update', 'edit']]);
 });

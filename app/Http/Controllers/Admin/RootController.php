@@ -13,6 +13,7 @@ class RootController extends Controller
 	public function __construct()
     {
         $this->middleware('auth');
+        
     }
 
     public function root()
@@ -23,8 +24,10 @@ class RootController extends Controller
     	$count['click'] = DB::table('projects')->select(DB::raw('sum(view_count) as total_view'))->get();
 
     	$users = User::orderBy('updated_at', 'desc')->get();
-    	$projects = Project::with('user')->get();
+    	$projects = Project::with('user')->orderBy('created_at', 'desc')->get();
 
-        return view('admin.root', compact('projects', 'users', 'count'));
+        $pages = getPages();
+
+        return view('admin.root', compact('projects', 'users', 'count', 'pages'));
     }
 }
