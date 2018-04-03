@@ -44,6 +44,8 @@ class User extends Authenticatable
             return '管理';
         } elseif ($this->hasRole('core')) {
             return '骨干成员';
+        } else {
+            return '注册用户';
         }
     }
 }
