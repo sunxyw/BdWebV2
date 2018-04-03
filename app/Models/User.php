@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'introduction', 'avatar',
+        'name', 'password', 'introduction', 'avatar',
     ];
 
     /**
@@ -34,18 +34,22 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Project');
     }
 
-    public function position()
+    public function position($returnAll = false)
     {
+        $list = ['最高管理', '组长', '管理', '骨干成员', '注册用户'];
+        if ($returnAll) {
+            return $list;
+        }
         if ($this->hasRole('Master')) {
-            return '最高管理';
+            return $list[0];
         } elseif ($this->hasRole('Leader')) {
-            return '组长';
+            return $list[1];
         } elseif ($this->hasRole('Admin')) {
-            return '管理';
+            return $list[2];
         } elseif ($this->hasRole('core')) {
-            return '骨干成员';
+            return $list[3];
         } else {
-            return '注册用户';
+            return $list[4];
         }
     }
 }
