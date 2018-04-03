@@ -22,5 +22,5 @@ Route::resource('projects', 'ProjectsController', ['only' => ['index', 'create',
 Route::get('projects/{project}/{slug?}', 'ProjectsController@show')->name('projects.show');
 
 Route::prefix('admin')->group(function () {
-    Route::get('root', 'AdminController@root')->name('admin.root');
+    Route::get('root', 'Admin/RootController@root')->name('admin.root');
 });
