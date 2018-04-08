@@ -32,7 +32,10 @@
             </div> <!-- end card -->
         </div>
 
-        @break($loop->iteration == 12)
+        @if($more != 1)
+            @break($loop->iteration == 12)
+        @endif
+
 
     @endforeach
 @else

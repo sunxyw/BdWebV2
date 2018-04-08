@@ -6,8 +6,8 @@ use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
@@ -18,12 +18,17 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $projects = Project::with('user')->get();
+        $projects = Project::with('user')->orderBy('view_count', 'desc')->get();
         if (!empty($_GET['author'])) {
-            $projects = $projects = Project::with('user')->where('user_id', $_GET['author'])->get();
+            $projects = Project::with('user')->orderBy('view_count', 'desc')->where('user_id', $_GET['author'])->get();
         }
         $users = User::all();
-        return view('projects.index', compact('projects', 'users'));
+        if (isset($_GET['more'])) {
+            $more = $_GET['more'];
+        } else {
+            $more = 0;
+        }
+        return view('projects.index', compact('projects', 'users', 'more'));
     }
 
     public function show(Request $request, Project $project)

@@ -21,7 +21,8 @@
                                         <div class="card card-refine card-plain">
                                             <h4 class="card-title">
                                                 条件筛选
-                                                <button type="reset" class="btn btn-default btn-icon btn-neutral pull-right"
+                                                <button type="reset"
+                                                        class="btn btn-default btn-icon btn-neutral pull-right"
                                                         rel="tooltip" data-original-title="重置">
                                                     <i class="arrows-1_refresh-69 now-ui-icons"></i>
                                                 </button>
@@ -36,7 +37,8 @@
                                                         <option value selected>--- 请选择 ---</option>
                                                         @foreach($users as $user)
                                                             @if(!empty($_GET['author']) && $_GET['author'] == $user->id)
-                                                                <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                                                                <option value="{{ $user->id }}"
+                                                                        selected>{{ $user->name }}</option>
                                                             @else
                                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                             @endif
@@ -55,6 +57,14 @@
                             <div class="row">
 
                                 @include('projects._list', ['projects' => $projects])
+
+                                @if($more == 1)
+                                    <a class="btn btn-primary btn-round mr-auto ml-auto"
+                                       href="{{ route('projects.index') }}">查看最新 <i class="fa fa-angle-up"></i></a>
+                                @else
+                                    <a class="btn btn-primary btn-round mr-auto ml-auto"
+                                       href="{{ route('projects.index') }}?more=1">查看全部 <i class="fa fa-angle-down"></i></a>
+                                @endif
 
                             </div>
                         </div>
